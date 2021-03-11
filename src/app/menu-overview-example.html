@@ -1,0 +1,128 @@
+<div class="main-container">
+  <!-- #docregion mat-menu-trigger-for -->
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <!-- #enddocregion mat-menu-trigger-for -->
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="item(1)">Item 1</button>
+    <button mat-menu-item (click)="item(2)">Item 2</button>
+    <button mat-menu-item (click)="item(3)">Item 3</button>
+  </mat-menu>
+  <div class="h_spacer"></div>
+
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu_upper">
+    上にメニュー(above)
+  </button>
+  <mat-menu #menu_upper="matMenu" yPosition="above">
+    <button mat-menu-item>ログイン</button>
+    <button mat-menu-item>マイページ</button>
+    <button mat-menu-item>問い合わせ</button>
+    <button mat-menu-item>ヘルプ</button>
+  </mat-menu>
+
+  <div class="h_spacer"></div>
+
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu_bottom">
+    下にメニュー(below)
+  </button>
+  <mat-menu #menu_bottom="matMenu" yPosition="below">
+    <button mat-menu-item>ログイン</button>
+    <button mat-menu-item>マイページ</button>
+    <button mat-menu-item>問い合わせ</button>
+    <button mat-menu-item>ヘルプ</button>
+  </mat-menu>
+
+  <div class="h_spacer"></div>
+
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu_before">
+    右にメニュー(before)
+  </button>
+  <mat-menu #menu_before="matMenu" xPosition="before">
+    <button mat-menu-item>ログイン</button>
+    <button mat-menu-item>マイページ</button>
+    <button mat-menu-item>問い合わせ</button>
+    <button mat-menu-item>ヘルプ</button>
+  </mat-menu>
+
+  <div class="h_spacer"></div>
+
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu_after">
+    左にメニュー(after)
+  </button>
+  <mat-menu #menu_after="matMenu" xPosition="after">
+    <button mat-menu-item>ログイン</button>
+    <button mat-menu-item>マイページ</button>
+    <button mat-menu-item>問い合わせ</button>
+    <button mat-menu-item>ヘルプ</button>
+  </mat-menu>
+  <div class="h_spacer"></div>
+
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu_sub1">
+    サブメニュー
+  </button>
+  <mat-menu #menu_sub1="matMenu">
+    <button mat-menu-item>ログイン</button>
+    <button mat-menu-item>マイページ</button>
+    <button mat-menu-item [matMenuTriggerFor]="menu_sub2">問い合わせ</button>
+    <button mat-menu-item>ヘルプ</button>
+  </mat-menu>
+
+  <mat-menu #menu_sub2="matMenu">
+    <button mat-menu-item>使い方について</button>
+    <button mat-menu-item>エラーについて</button>
+    <button mat-menu-item>寄付について</button>
+    <button mat-menu-item>その他</button>
+  </mat-menu>
+
+  <div class="h_spacer"></div>
+
+  <button mat-icon-button [matMenuTriggerFor]="lagyMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #lagyMenu="matMenu">
+    <ng-template matMenuContent>
+      <button mat-menu-item>ng-templateとmatMenuContentを使い</button>
+      <button mat-menu-item>メニューが開かれたらレンダリング</button>
+      <button mat-menu-item>メニューの中身は遅延読み込み</button>
+    </ng-template>
+  </mat-menu>
+
+  <div class="h_spacer"></div>
+
+  <button
+    mat-button
+    [matMenuTriggerFor]="passDataMenu"
+    [matMenuTriggerData]="{name: {name: 'Sally', age: '20'}}"
+  >
+    Sally's menu
+  </button>
+
+  <button
+    mat-button
+    [matMenuTriggerFor]="passDataMenu"
+    [matMenuTriggerData]="{name: {name: 'Bob', age: 17}}"
+  >
+    Bob's menu
+  </button>
+
+  <mat-menu #passDataMenu="matMenu">
+    <ng-template matMenuContent let-name="name">
+      <button mat-menu-item>設定</button>
+      <button mat-menu-item [matMenuTriggerFor]="menu_yesno">
+        あなたは {{name.age}} 歳ですか？
+      </button>
+      <button mat-menu-item>ログアウト（{{name.name}},{{name.age}}）</button>
+    </ng-template>
+  </mat-menu>
+
+  <mat-menu #menu_yesno="matMenu">
+    <button mat-menu-item>はい</button>
+    <button mat-menu-item>いいえ</button>
+  </mat-menu>
+
+  <div class="h_spacer"></div>
+</div>
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
